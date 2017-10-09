@@ -16,9 +16,13 @@ public class Game {
 
     public Game(){
         // initialize a new game such that each column can store cards
-        Card deck[] = new Card[52];
         buildDeck();
         shuffle();
+
+        // Initialize four empty array lists to store cards
+        for (int i = 0; i < cols.size(); i++) {
+            cols.get(i) = new ArrayList<Card>();
+        }
     }
 
     public void buildDeck() {
