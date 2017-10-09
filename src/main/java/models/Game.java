@@ -13,6 +13,8 @@ public class Game {
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
+    public java.util.List<Card> discard;
+
 
     public Game(){
         // initialize a new game such that each column can store cards
@@ -21,8 +23,11 @@ public class Game {
 
         // Initialize four empty array lists to store cards
         for (int i = 0; i < cols.size(); i++) {
-            cols.get(i) = new ArrayList<Card>();
+            cols.add(deck);
         }
+
+        // Initialize discard pile
+        discard =  new ArrayList<Card>();
     }
 
     public void buildDeck() {
