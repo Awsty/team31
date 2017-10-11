@@ -40,7 +40,7 @@ public class Game {
     }
 
     public void shuffle() {
-        // shuffles the deck so that it is random
+        // shuffles the deck so that it is randomized
         Collections.shuffle(deck);
     }
 
