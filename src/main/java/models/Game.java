@@ -51,12 +51,26 @@ public class Game {
     }
 
     //Function by Daniel Lee
-    //Testing to see if it's updated
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+        //Checks to see if there are other cards in the game with the same suit
+        int canRem = 0;
 
+        for(int i=0; i<4; i++){
+            if(i != columnNumber) {
+                if(getTopCard(i).getSuit() != getTopCard(columnNumber).getSuit()){
+                    canRem = 0;
+                }
+                else{
+                    canRem = 1;
+                    break;
+                }
+            }
+        }
 
-        System.out.print("Hello, in the remove function now.");
+        if(canRem == 1){
+            removeCardFromCol(columnNumber);
+        }
 
     }
 
