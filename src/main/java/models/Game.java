@@ -75,6 +75,7 @@ public class Game {
     }
 
     private boolean columnHasCards(int columnNumber) {
+        // Function by Brandon Mei
         // check indicated column for number of cards; if no cards return false, otherwise return true
         if(this.cols.get(columnNumber).size() != 0) {
             return false;
@@ -90,8 +91,12 @@ public class Game {
 
 
     public void move(int columnFrom, int columnTo) {
+        // Function by Brandon Mei
         // remove the top card from the columnFrom column, add it to the columnTo column
-
+        if(columnHasCards(columnFrom)) {
+            addCardToCol(columnTo, getTopCard(columnFrom));
+            removeCardFromCol(columnFrom);
+        }
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
