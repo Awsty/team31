@@ -48,8 +48,11 @@ public class Game {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
     }
 
+    //Function by Daniel Lee
+    //Testing to see if it's updated
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+        System.out.print("Hello, in the remove function now.");
     }
 
     private boolean columnHasCards(int columnNumber) {
