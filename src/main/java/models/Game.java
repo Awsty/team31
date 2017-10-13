@@ -52,7 +52,9 @@ public class Game {
     //Testing to see if it's updated
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
-        System.out.print("Hello, in the remove function now.");
+        if(columnNumber==1){
+
+        }
     }
 
     private boolean columnHasCards(int columnNumber) {
