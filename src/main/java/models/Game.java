@@ -50,8 +50,13 @@ public class Game {
 
     }
 
+    //Function by Daniel Lee
+    //Testing to see if it's updated
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+
+
+        System.out.print("Hello, in the remove function now.");
 
     }
 
