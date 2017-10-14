@@ -46,10 +46,14 @@ public class Game {
         System.out.print("Shuffle function called. ");
 
     }
-
+    //Function by Austin Liang
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
-
+        for (int i = 0; i < 4; i++){
+            Card topCard = deck.get(0);
+            deck.remove(0);
+            addCardToCol(i, topCard);
+        }
     }
 
     //Function by Daniel Lee
@@ -76,8 +80,8 @@ public class Game {
 
     }
 
+    // Function by Brandon Mei
     private boolean columnHasCards(int columnNumber) {
-        // Function by Brandon Mei
         // check indicated column for number of cards; if no cards return false, otherwise return true
         if(this.cols.get(columnNumber).size() != 0) {
             return false;
@@ -91,9 +95,8 @@ public class Game {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
-
+    // Function by Brandon Mei
     public void move(int columnFrom, int columnTo) {
-        // Function by Brandon Mei
         // remove the top card from the columnFrom column, add it to the columnTo column
         if(columnHasCards(columnFrom)) {
             addCardToCol(columnTo, getTopCard(columnFrom));
