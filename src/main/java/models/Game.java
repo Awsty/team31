@@ -39,9 +39,11 @@ public class Game {
         }
     }
 
+    // Function by Johnny Po
     public void shuffle() {
         // shuffles the deck so that it is randomized
         Collections.shuffle(deck);
+        System.out.print("Shuffle function called. ");
 
     }
 
