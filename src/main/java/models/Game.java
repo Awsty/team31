@@ -49,8 +49,9 @@ public class Game {
     //Function by Austin Liang
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
-        for (int i = 0; i < 4; i++){
-            Card topCard = deck.get(0);
+        Card topCard;
+        for(int i = 0; i < 4; i++) {
+            topCard = deck.get(0);
             deck.remove(0);
             addCardToCol(i, topCard);
         }
