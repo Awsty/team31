@@ -235,6 +235,17 @@ $.ajax({
 });
 });
 
+function moveCard(colFrom,colTo){
+    $.ajax({
+      type: "POST",
+      url: "/moveCard/"+colFrom+"/"+colTo,
+      data: JSON.stringify(game),
+      success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);},
+      contentType:"application/json; charset=utf-8",
+      dataType:"json",
+    });
 
 
 
