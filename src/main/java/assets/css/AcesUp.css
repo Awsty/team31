@@ -2,6 +2,10 @@ tr{
 width:500px;
 }
 
+body {
+    background-color: #006600;
+}
+
 td{
 width:100px;
 height:20px;
@@ -15,4 +19,77 @@ font-weight: bold;
 .cardLocation{
 width: 100px;
 background-color:#F0F0F0;
+}
+
+/* Left side list of buttons */
+.buttonList  {
+    float: left;
+    list-style: none;
+    margin-right: 10px;
+}
+
+/* Deal Button */
+#dealButton {
+    background-color: #008CBA; /* Blue */
+    color: white;
+    text-decoration: none;
+    padding: 50px 20px;
+    margin-bottom: 20px;
+    width: 100px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* When you hover over the Deal Button */
+#dealButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+/* Undo Button */
+#undoButton {
+    background-color: #f44336; /* Red */
+    color: white;
+    text-decoration: none;
+    padding: 50px 20px;
+    margin-bottom: 20px;
+    width: 100px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* When you hover over the Undo Button */
+#undoButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+/* New Game Button */
+#NGButton {
+    background-color: #4CAF50; /* Red */
+    color: white;
+    text-decoration: none;
+    padding: 50px 20px;
+    margin-bottom: 20px;
+    width: 100px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* When you hover over the New Game Button */
+#NGButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    cursor: pointer;
 }
