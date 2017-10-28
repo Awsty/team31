@@ -16,6 +16,52 @@
     </li>
 </ul>
 
+<button id = "infoButton" type = button">?</button>
+<div id = "myModal" class = "modal">
+    <div class = "modal-content">
+        <span class = "close">&times;</span>
+        <p>
+            <h1>RULES</h1>
+            <ul>
+                <li>You can remove a card when there is a card in another pile that has a the same suit AND a higher value</li>
+                <li>Aces are the highest value and 2's are the lowest value</li>
+                <li>If a column is empty, you can move a card from any other column to fill that spot</li>
+                <li>The game is won if all cards have been removed except the four aces</li>
+            </ul>
+        </p>
+    </div>
+</div>
+
+<!-- Javascript for the info button-->
+<script>
+    var modal = document.getElementById('myModal');
+
+    var btn = document.getElementById("infoButton");
+    if(btn){
+        console.log("Button is not null");
+    }
+
+    var span = document.getElementsByClassName("close")[0];
+    if(span){
+        console.log("Span is not null");
+    }
+
+    btn.onclick = function(){
+        console.log("Button was clicked");
+        modal.style.display = "block";
+    }
+
+    span.onclick = function(){
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event){
+        if(event.target == modal){
+        modal.style.display = "none";
+        }
+    }
+</script>
+
 <table>
     <tr class="title">
         <td>Column0</td>
