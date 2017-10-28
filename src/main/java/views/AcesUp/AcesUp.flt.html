@@ -96,30 +96,20 @@
 <script>
 
 var game;
-
+var dict = { "Spades": '♠', "Hearts":'♡', "Diamonds":'♢', "Clubs":'♣'}
+var fdict = {11:"J", 12:"Q", 13:"K", 14:"A"}
 function display(game) {
-console.log(game);
-
-$( '.columnOfCards .cardLocation' ).html("");
-
-    $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).html(val.value + val.suit);
-    });
-
- $.each(game.cols[1], function( key, val ) {
-        $( '#c1 .l'+key ).html(val.value + val.suit);
-    });
-
- $.each(game.cols[2], function( key, val ) {
-        $( '#c2 .l'+key ).html(val.value + val.suit);
-    });
-
- $.each(game.cols[3], function( key, val ) {
-        $( '#c3 .l'+key ).html(val.value + val.suit);
-    });
-
-
-
+    console.log(game);
+    $('.columnOfCards .cardLocation').html("");
+    //Change this into a for loop 4 times
+    for(i = 0; i < 4; i++) {
+        $.each(game.cols[i],
+            function( key, val ) {
+                butt = "<button id=l" + key + "c" + i +">" + (val.value > 10 ? fdict[val.value]:val.value) + dict[val.suit] + "</button>";
+                $( '#c'+i+' .l'+key ).html(butt);
+            }
+        );
+    }
 }
 
 // Calls ApplicationController.gameGet()
@@ -188,8 +178,11 @@ $.ajax({
 });
 
 
-</script>
 
+
+
+
+</script>
 
 
 </body>
