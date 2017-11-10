@@ -16,6 +16,52 @@
     </li>
 </ul>
 
+<button id = "infoButton" title = "Rules" type = button">?</button>
+<div id = "myModal" class = "modal">
+    <div class = "modal-content">
+        <span class = "close">&times;</span>
+        <p>
+            <h1>RULES</h1>
+            <ul>
+                <li>You can remove a card when there is a card in another pile that has a the same suit AND a higher value</li>
+                <li>Aces are the highest value and 2's are the lowest value</li>
+                <li>If a column is empty, you can move a card from any other column to fill that spot</li>
+                <li>The game is won if all cards have been removed except the four aces</li>
+            </ul>
+        </p>
+    </div>
+</div>
+
+<!-- Javascript for the info button-->
+<script>
+    var modal = document.getElementById('myModal');
+
+    var btn = document.getElementById("infoButton");
+    if(btn){
+        console.log("Button is not null");
+    }
+
+    var span = document.getElementsByClassName("close")[0];
+    if(span){
+        console.log("Span is not null");
+    }
+
+    btn.onclick = function(){
+        console.log("Button was clicked");
+        modal.style.display = "block";
+    }
+
+    span.onclick = function(){
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event){
+        if(event.target == modal){
+        modal.style.display = "none";
+        }
+    }
+</script>
+
 <table>
     <tr class="title">
         <td>Column0</td>
@@ -108,30 +154,20 @@
 <script>
 
 var game;
-
+var dict = { "Spades": '♠', "Hearts":'♡', "Diamonds":'♢', "Clubs":'♣'}
+var fdict = {11:"J", 12:"Q", 13:"K", 14:"A"}
 function display(game) {
-console.log(game);
-
-$( '.columnOfCards .cardLocation' ).html("");
-
-    $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).html(val.value + val.suit);
-    });
-
- $.each(game.cols[1], function( key, val ) {
-        $( '#c1 .l'+key ).html(val.value + val.suit);
-    });
-
- $.each(game.cols[2], function( key, val ) {
-        $( '#c2 .l'+key ).html(val.value + val.suit);
-    });
-
- $.each(game.cols[3], function( key, val ) {
-        $( '#c3 .l'+key ).html(val.value + val.suit);
-    });
-
-
-
+    console.log(game);
+    $('.columnOfCards .cardLocation').html("");
+    //Change this into a for loop 4 times
+    for(i = 0; i < 4; i++) {
+        $.each(game.cols[i],
+            function( key, val ) {
+                butt = "<button id=l" + key + "c" + i +">" + (val.value > 10 ? fdict[val.value]:val.value) + dict[val.suit] + "</button>";
+                $( '#c'+i+' .l'+key ).html(butt);
+            }
+        );
+    }
 }
 
 // Calls ApplicationController.gameGet()
@@ -142,6 +178,8 @@ game = data;
 
 
 $("#dealButton").click(function(){
+console.log("dealButton clicked! ");
+
 $.ajax({
   type: "POST",
   url: "/dealGame",
@@ -202,6 +240,32 @@ $.ajax({
 
 </script>
 
+<!-- Javascript for New Game Button -->
+<script>
+var NGbtn = document.getElementById("NGButton");
+
+if(!NGbtn) {
+    console.log("New Game Button is NULL ");
+}
+
+NGbtn.onclick = function() {
+    console.log("NGButton clicked! ");
+    window.location.reload();
+}
+</script>
+
+<!-- Javascript for Undo Button -->
+<script>
+var undobtn = document.getElementById("undoButton");
+
+if(!undobtn) {
+    console.log("Undo Button is NULL ");
+}
+
+undobtn.onclick = function() {
+    console.log("undoButton clicked! ");
+}
+</script>
 
 
 </body>
