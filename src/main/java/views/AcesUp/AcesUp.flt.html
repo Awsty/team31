@@ -178,6 +178,8 @@ game = data;
 
 
 $("#dealButton").click(function(){
+console.log("dealButton clicked! ");
+
 $.ajax({
   type: "POST",
   url: "/dealGame",
@@ -235,22 +237,34 @@ $.ajax({
 });
 });
 
-function moveCard(colFrom,colTo){
-    $.ajax({
-      type: "POST",
-      url: "/moveCard/"+colFrom+"/"+colTo,
-      data: JSON.stringify(game),
-      success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-            game = data;
-            display(data);},
-      contentType:"application/json; charset=utf-8",
-      dataType:"json",
-    });
 
+</script>
 
+<!-- Javascript for New Game Button -->
+<script>
+var NGbtn = document.getElementById("NGButton");
 
+if(!NGbtn) {
+    console.log("New Game Button is NULL ");
+}
 
+NGbtn.onclick = function() {
+    console.log("NGButton clicked! ");
+    window.location.reload();
+}
+</script>
 
+<!-- Javascript for Undo Button -->
+<script>
+var undobtn = document.getElementById("undoButton");
+
+if(!undobtn) {
+    console.log("Undo Button is NULL ");
+}
+
+undobtn.onclick = function() {
+    console.log("undoButton clicked! ");
+}
 </script>
 
 
