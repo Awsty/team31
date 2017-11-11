@@ -146,25 +146,39 @@
 </table>
 
 
-<BR>Remove from: <button id="Remove1">Column1</button><button id="Remove2">Column2</button><button id="Remove3">Column3</button><button id="Remove4">Column4</button>
+<BR>Remove from: <button id="Remove1">Column 0</button><button id="Remove2">Column 1</button><button id="Remove3">Column 2</button><button id="Remove4">Column 3</button>
 
-<BR>Move from column <input type="text" id="from_col"  /> to <input type="text" id="to_col"  /> <button id="moveButton">Move</button>
+<BR>Move from: <select id="from_col">
+    <option value="0">Column 0</option>
+    <option value="1">Column 1</option>
+    <option value="2">Column 2</option>
+    <option value="3">Column 3</option>
+</select>
+To
+<select id="to_col">
+    <option value="0">Column 0</option>
+    <option value="1">Column 1</option>
+    <option value="2">Column 2</option>
+    <option value="3">Column 3</option>
+</select>
 
+<button id="moveButton">Move</button>
 
 <script>
 
+//card suits
 var game;
-var dict = { "Spades": '♠', "Hearts":'♡', "Diamonds":'♢', "Clubs":'♣'}
-var fdict = {11:"J", 12:"Q", 13:"K", 14:"A"}
+var suits = { "Spades": '♠', "Hearts":'♡', "Diamonds":'♢', "Clubs":'♣'}
+var pattern = {11:"J", 12:"Q", 13:"K", 14:"A"}
 function display(game) {
     console.log(game);
     $('.columnOfCards .cardLocation').html("");
     //Change this into a for loop 4 times
     for(i = 0; i < 4; i++) {
         $.each(game.cols[i],
-            function( key, val ) {
-                butt = "<button id=l" + key + "c" + i +">" + (val.value > 10 ? fdict[val.value]:val.value) + dict[val.suit] + "</button>";
-                $( '#c'+i+' .l'+key ).html(butt);
+            function(key, val) {
+                cardButtons = "<button id=l" + key + "c" + i +">" + (val.value > 10 ? pattern[val.value]:val.value) + suits[val.suit] + "</button>";
+                $( '#c'+i+' .l'+key ).html(cardButtons);
             }
         );
     }
