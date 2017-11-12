@@ -3,6 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import javax.swing.JOptionPane;
+
 
 /**
  * Assignment 1: Students must implement dealFour(), remove(), move(), and columnHasCards() methods
@@ -79,6 +81,11 @@ public class Game {
         }
     }
 
+    // Adds the card card to the column
+    public void addCard(Card card, int columnNumber) {
+        cols.get(columnNumber).add(card);
+    }
+
     private boolean columnHasCards(int columnNumber) {
         if(this.cols.get(columnNumber).size()>0){
             return true;
@@ -92,9 +99,26 @@ public class Game {
 
 
     public void move(int columnFrom, int columnTo) {
-        Card cardToMove = getTopCard(columnFrom);
-        this.removeCardFromCol(columnFrom);
-        this.addCardToCol(columnTo,cardToMove);
+        // If the column has cards
+        if(columnHasCards(columnFrom)) {
+            Card topCard = getTopCard(columnFrom);
+            // If the top card is an Ace
+            if(topCard.getValue() == 14) {
+                if(!columnHasCards(columnTo)) {
+                    cols.get(columnFrom).remove(cols.get(columnFrom).size() - 1);
+                    addCard(topCard, columnTo);
+                }
+                // Otherwise, print error saying this cannot be
+                else {
+                    JOptionPane.showMessageDialog(null, "This deck is not empty, so you cannot move into this deck. ", "ERROR: ", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            // Otherwise, no cards can be moved
+            else {
+                JOptionPane.showMessageDialog(null, "You can only move Ace cards into empty decks! ", "ERROR: ", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
