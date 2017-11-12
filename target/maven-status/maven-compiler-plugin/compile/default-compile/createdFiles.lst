@@ -2,5 +2,6 @@ models/Game.class
 models/Card.class
 conf/Module.class
 conf/Routes.class
+models/Deck.class
 controllers/ApplicationController.class
 models/Suit.class

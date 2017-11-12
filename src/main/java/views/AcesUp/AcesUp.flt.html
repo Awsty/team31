@@ -9,14 +9,14 @@
         <button id="dealButton">Deal</button>
     </li>
     <li>
-        <button id="undoButton">Undo</button>
+        <button id="rulesButton">Rules</button>
     </li>
     <li>
         <button id="NGButton">New Game</button>
     </li>
 </ul>
 
-<button id = "infoButton" title = "Rules" type = button">?</button>
+<!--<button id = "infoButton" title = "Rules" type = button">?</button>-->
 <div id = "myModal" class = "modal">
     <div class = "modal-content">
         <span class = "close">&times;</span>
@@ -36,7 +36,7 @@
 <script>
     var modal = document.getElementById('myModal');
 
-    var btn = document.getElementById("infoButton");
+    var btn = document.getElementById("rulesButton");
     if(btn){
         console.log("Button is not null");
     }
@@ -268,18 +268,6 @@ NGbtn.onclick = function() {
 }
 </script>
 
-<!-- Javascript for Undo Button -->
-<script>
-var undobtn = document.getElementById("undoButton");
-
-if(!undobtn) {
-    console.log("Undo Button is NULL ");
-}
-
-undobtn.onclick = function() {
-    console.log("undoButton clicked! ");
-}
-</script>
 
 
 </body>
