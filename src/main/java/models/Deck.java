@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 // Created by Daniel Lee
 public class Deck {
@@ -24,7 +25,7 @@ public class Deck {
     }
 
     void shuffle(){
-
+      Collections.shuffle(gameDeck);
     }
 
     int getRemainingAmountOfCards(){
