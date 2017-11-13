@@ -11,9 +11,12 @@ width:100px;
 height:20px;
 text-align:center;
 }
-
+//Check if this is h1, the main style for ACES UP TITLE.
+//check
+//checkq34r
 .title{
 font-weight: bold;
+float: left;
 }
 
 .cardLocation{
