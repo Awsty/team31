@@ -172,16 +172,21 @@ var suits = { "Spades": '♠', "Hearts":'♡', "Diamonds":'♢', "Clubs":'♣'}
 var pattern = {11:"J", 12:"Q", 13:"K", 14:"A"}
 function display(game) {
     console.log(game);
-    $('.columnOfCards .cardLocation').html("");
-    //Change this into a for loop 4 times
-    for(i = 0; i < 4; i++) {
-        $.each(game.cols[i],
-            function(key, val) {
-                cardButtons = "<button id=l" + key + "c" + i +">" + (val.value > 10 ? pattern[val.value]:val.value) + suits[val.suit] + "</button>";
-                $( '#c'+i+' .l'+key ).html(cardButtons);
-            }
-        );
-    }
+
+
+    $( '.columnOfCards .cardLocation' ).html("");
+     $.each(game.columns[0].cards, function( key, val ) {
+            $( '#c0 .l'+key ).html(val.value + val.suit);
+        });
+     $.each(game.columns[1].cards, function( key, val ) {
+            $( '#c1 .l'+key ).html(val.value + val.suit);
+        });
+     $.each(game.columns[2].cards, function( key, val ) {
+            $( '#c2 .l'+key ).html(val.value + val.suit);
+        });
+     $.each(game.columns[3].cards, function( key, val ) {
+            $( '#c3 .l'+key ).html(val.value + val.suit);
+        });
 }
 
 // Calls ApplicationController.gameGet()
