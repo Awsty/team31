@@ -27,11 +27,22 @@ import ninja.params.PathParam;
 
 @Singleton
 public class ApplicationController {
+    public static int theGameMode;
+
+//    public Result index() {
+//        return Results.html().template("views/AcesUp/AcesUp.flt.html");
+//    }
 
     public Result index() {
+        return Results.html().template("views/AcesUp/welcomeScreen.html");
+    }
+
+    public Result mainIndex() {
+        Game.updateMode();
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-    
+
+
     public Result gameGet(){
         Game g = new Game();
         g.deck.shuffle();
@@ -57,4 +68,8 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
+    public Result modeResult(Context context, @PathParam("theNumber") int gameModeResult, Game g) {
+        theGameMode = gameModeResult;
+        return Results.json().render(g);
+    }
 }

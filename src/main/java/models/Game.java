@@ -1,11 +1,15 @@
 package models;
 
+import controllers.ApplicationController;
+import sun.rmi.runtime.Log;
+
 import java.util.ArrayList;
 
 public class Game {
 
     public Deck deck = new Deck();
     public java.util.List<Column> columns = new ArrayList<>();
+    public static int gameMode; /* Different game modes: 0 = Normal, 1 = Spanish */
 
     public Game(){
         columns.add(new Column(1));
@@ -20,6 +24,10 @@ public class Game {
             Card c = deal.get(i);
             columns.get(i).cards.add(c);
         }
+    }
+
+    public static void updateMode() {
+        gameMode = ApplicationController.theGameMode;
     }
 
     //customDeal to setup game for testing purposes (i.e. shuffled cards are random and hard to test)
@@ -43,9 +51,17 @@ public class Game {
                     if (columnHasCards(i)) {
                         Card compare = getTopCard(i);
                         if (compare.getSuit() == c.getSuit()) {
-                            if (compare.getValue() > c.getValue()) {
+                            if(compare.getValue() == 14) {
+                                System.out.println("Ace card detected! Can remove.  ");
                                 removeCard = true;
                             }
+                            else {
+                                System.out.println("Cannot remove a non-ace card! ");
+                                removeCard = false;
+                            }
+//                            if (compare.getValue() > c.getValue()) {
+//                                removeCard = true;
+//                            }
                         }
                     }
                 }
