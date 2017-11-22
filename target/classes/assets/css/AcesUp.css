@@ -154,3 +154,54 @@ background-color:#F0F0F0;
     text-decoration: none;
     cursor: pointer;
 }
+
+
+/* --- Welcome Screen CSS --- */
+.welcomeText {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.chooseMode {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.buttonsDiv {
+    margin: 0 auto;
+}
+
+#normalGame, #spanishGame {
+    display: block;
+    margin: 0;
+    background-color: #008CBA; /* Blue */
+    color: white;
+    text-decoration: none;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    width: 100px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#normalGame:hover, #spanishGame:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+}
+
+#footer .teamInfo {
+    text-align: center;
+}
