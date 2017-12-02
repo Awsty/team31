@@ -1,27 +1,30 @@
-tr{
-width:500px;
+table {
+        border-spacing: 5px 5px;
+}
+
+tr {
+    width:500px;
 }
 
 body {
     background-color: #006600;
 }
 
-td{
-width:100px;
-height:20px;
-text-align:center;
-}
-//Check if this is h1, the main style for ACES UP TITLE.
-//check
-//checkq34r
-.title{
-font-weight: bold;
-float: left;
+td {
+    width:100px;
+    height:20px;
+    text-align:center;
 }
 
-.cardLocation{
-width: 100px;
-background-color:#F0F0F0;
+//Check if this is h1, the main style for ACES UP TITLE.
+.title {
+    font-weight: bold;
+    float: left;
+}
+
+.cardLocation {
+    width: 100px;
+    background-color:#F0F0F0;
 }
 
 /* Left side list of buttons */

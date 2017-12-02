@@ -18,6 +18,7 @@ package controllers;
 
 import models.Card;
 import models.Game;
+import models.SpanishGame;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -42,9 +43,16 @@ public class ApplicationController {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
 
-
     public Result gameGet(){
         Game g = new Game();
+        g.deck.shuffle();
+        g.dealFour();
+
+        return Results.json().render(g);
+    }
+
+    public Result gameGets(){
+        SpanishGame g = new SpanishGame();
         g.deck.shuffle();
         g.dealFour();
 
