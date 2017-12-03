@@ -6,16 +6,39 @@ import sun.rmi.runtime.Log;
 import java.util.ArrayList;
 
 public class Game {
+    int gameMode; /* 0 - Normal, 1 - Spanish */
 
-    public Deck deck = new Deck();
+    public Deck deck;
     public java.util.List<Column> columns = new ArrayList<>();
-    public static int gameMode; /* Different game modes: 0 = Normal, 1 = Spanish */
 
     public Game(){
         columns.add(new Column(1));
         columns.add(new Column(2));
         columns.add(new Column(3));
         columns.add(new Column(4));
+
+        deck = new Deck();
+        this.gameMode = 0;
+        deck.shuffle();
+    }
+
+    public Game(int gameMode){
+        columns.add(new Column(1));
+        columns.add(new Column(2));
+        columns.add(new Column(3));
+        columns.add(new Column(4));
+
+        if(gameMode == 0) {
+            System.out.println("Regular game mode! ");
+            deck = new Deck();
+        }
+        else if(gameMode == 1) {
+            System.out.println("Spanish game mode! ");
+            deck = new SpanishDeck();
+        }
+
+        this.gameMode = gameMode;
+        deck.shuffle();
     }
 
     public void dealFour() {
@@ -24,10 +47,6 @@ public class Game {
             Card c = deal.get(i);
             columns.get(i).cards.add(c);
         }
-    }
-
-    public static void updateMode() {
-        gameMode = ApplicationController.theGameMode;
     }
 
     //customDeal to setup game for testing purposes (i.e. shuffled cards are random and hard to test)

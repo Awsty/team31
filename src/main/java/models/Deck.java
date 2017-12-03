@@ -9,6 +9,11 @@ public class Deck {
     public java.util.List<Card> cards = new ArrayList<>();
 
     public Deck() {
+        this.buildDeck();
+        this.shuffle();
+    }
+
+    public void buildDeck() {
         for(int i = 2; i < 15; i++){
             cards.add(new Card(i,Suit.Clubs));
             cards.add(new Card(i,Suit.Hearts));

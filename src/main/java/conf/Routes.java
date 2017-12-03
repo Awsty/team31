@@ -30,10 +30,11 @@ public class Routes implements ApplicationRoutes {
     @Override
     public void init(Router router) {  
         
-        router.GET().route("/").with(ApplicationController.class, "index");
+        router.GET().route("/").with(ApplicationController.class, "mainIndex");
         router.GET().route("/AcesUp.flt.html").with(ApplicationController.class, "mainIndex");
 
         router.GET().route("/game").with(ApplicationController.class, "gameGet");
+        router.GET().route("/spanishGame").with(ApplicationController.class, "spanishGameGet");
         router.POST().route("/dealGame").with(ApplicationController.class, "dealPost");
         router.POST().route("/moveCard/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCard");
         router.POST().route("/removeCard/{column}").with(ApplicationController.class, "removeCard");

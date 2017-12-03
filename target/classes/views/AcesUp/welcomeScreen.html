@@ -20,37 +20,53 @@
 
 <!-- The Script for the Buttons -->
 <script>
-    var theMode;
-    function getMode(){
-        return theMode;
-    }
+function display(game){
+    console.log(game);
+}
 
-    var theGame;
-    function display(theGame) {
-        console.log(theGame);
-    }
+var game;
 
-    // Calls ApplicationController.gameGet()
-    $.getJSON("http://localhost:8080/game", function( data ) {
+$.getJSON("http://localhost:8080/", function( data ) {
     display(data);
     game = data;
-    });
+});
 
+    // Calls ApplicationController.gameGet() for normal game
     $("#normalGame").click(function(){
-    $.ajax({
-      type: "POST",
-      url: "/theMode/0",
-      data: JSON.stringify(game),
-      success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+
+        $.ajax({
+            type: "POST",
+            url: "/game",
+            data: JSON.stringify(game),
+            success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
             game = data;
             display(data);},
-      contentType:"application/json; charset=utf-8",
-      dataType:"json",
-      });
+            contentType:"application/json; charset=utf-8",
+            dataType:"json",
+        });
 
-    setTimeout(function() {
-      window.open('AcesUp.flt.html','_self',false);
-    }, 75);
+        setTimeout(function() {
+          window.open('AcesUp.flt.html','_self',false);
+        }, 75);
+    });
+
+    // Calls ApplicationController.gameGet() for spanish game
+    $("#spanishGame").click(function(){
+
+        $.ajax({
+            type: "POST",
+            url: "/spanishGame",
+            data: JSON.stringify(game),
+            success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);},
+            contentType:"application/json; charset=utf-8",
+            dataType:"json",
+        });
+
+        setTimeout(function() {
+          window.open('AcesUp.flt.html','_self',false);
+        }, 75);
     });
 </script>
 </body>
