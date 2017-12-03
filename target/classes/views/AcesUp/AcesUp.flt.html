@@ -16,6 +16,18 @@
     </li>
 </ul>
 
+<div id="introModal" class="intro-modal">
+    <div class="modal-content">
+        <h1 class="welcomeText">Welcome to AcesUp!</h1>
+
+        <p class="introText">Please choose the version of the game that you'd like to play</p>
+        <div class="buttonsDiv">
+            <button id="normalGame">Normal</button>
+            <button id="spanishGame">Spanish</button>
+        </div>
+    </div>
+</div>
+
 <!--<button id = "infoButton" title = "Rules" type = button">?</button>-->
 <div id = "myModal" class = "modal">
     <div class = "modal-content">
@@ -31,6 +43,35 @@
         </p>
     </div>
 </div>
+
+<!-- Javascript for intro modal -->
+<script type="text/javascript">
+    var introModal = document.getElementById('introModal');
+    var rbtn = document.getElementById('normalGame');
+    var sbtn = document.getElementById('spanishGame');
+
+    $(document).ready(function(){
+        introModal.style.display = "block";
+    });
+
+    rbtn.onclick = function(){
+        console.log("Regular game button clicked! ");
+        $.getJSON("http://localhost:8080/game", function( data ) {
+            display(data);
+            game = data;
+        });
+        introModal.style.display = "none";
+    }
+
+    sbtn.onclick = function(){
+        console.log("Spanish game button clicked! ");
+        $.getJSON("http://localhost:8080/spanishGame", function( data ) {
+            display(data);
+            game = data;
+        });
+        introModal.style.display = "none";
+    }
+</script>
 
 <!-- Javascript for the info button-->
 <script>
@@ -168,8 +209,8 @@ To
 
 //card suits
 var game;
-var suits = { "Spades": '♠', "Hearts":'♡', "Diamonds":'♢', "Clubs":'♣'}
-var pattern = {11:"J", 12:"Q", 13:"K", 14:"A"}
+var suits = { "Spades": '♠', "Hearts":'♡', "Diamonds":'♢', "Clubs":'♣', "Oros": 'O', "Copas":'C', "Espadas":'E', "Bastos":'B', "Comodines":'@'}
+var pattern = {11:"J", 12:"Q", 13:"K", 14:"A", 15:' ', ' ':15, 'A':14, 'K':13, 'Q':12, 'J':11}
 function display(game) {
     console.log(game);
 

@@ -16,9 +16,7 @@
 
 package controllers;
 
-import models.Card;
 import models.Game;
-import models.SpanishGame;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -28,7 +26,6 @@ import ninja.params.PathParam;
 
 @Singleton
 public class ApplicationController {
-    public static int theGameMode;
 
 //    public Result index() {
 //        return Results.html().template("views/AcesUp/AcesUp.flt.html");
@@ -39,24 +36,22 @@ public class ApplicationController {
     }
 
     public Result mainIndex() {
-        Game.updateMode();
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
 
     public Result gameGet(){
-        Game g = new Game();
+        Game g = new Game(0);
         g.deck.shuffle();
         g.dealFour();
 
         return Results.json().render(g);
     }
 
-    public Result gameGets(){
-        SpanishGame g = new SpanishGame();
-        g.deck.shuffle();
-        g.dealFour();
+    public Result spanishGameGet(){
+        Game sg = new Game(1);
+        sg.dealFour();
 
-        return Results.json().render(g);
+        return Results.json().render(sg);
     }
 
     public Result dealPost(Context context, Game g) {
@@ -73,11 +68,6 @@ public class ApplicationController {
 
     public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
         g.move(colFrom,colTo);
-        return Results.json().render(g);
-    }
-
-    public Result modeResult(Context context, @PathParam("theNumber") int gameModeResult, Game g) {
-        theGameMode = gameModeResult;
         return Results.json().render(g);
     }
 }
