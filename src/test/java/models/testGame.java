@@ -60,5 +60,14 @@ public class testGame {
     }
 
 
+    @Test
+    public void testColumnHasCards(){
+        Game g = new Game();
+        g.dealFour();
+        assertEquals(false, g.isColumnEmpty(0));
+        assertEquals(false, g.isColumnEmpty(1));
+        assertEquals(false, g.isColumnEmpty(2));
+        assertEquals(false, g.isColumnEmpty(3));
+    }
 
 }
