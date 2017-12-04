@@ -1,20 +1,13 @@
-package java.models;
+package models;
 
-import models.Card;
-import models.Column;
-import models.Deck;
-import models.Game;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
+public class testColumn {
     @Test
-    public class testColumn {
-        int id = 1;
-        assertEquals
-
+    public void testColumns(){
+        SpanishDeck sd = new SpanishDeck();
+        assertEquals(50,sd.cards.size());
+    }
 }
