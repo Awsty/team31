@@ -63,32 +63,34 @@ public class Game {
     }
 
     public void remove(int columnNumber) {
-        if(columnHasCards(columnNumber)) {
+        boolean sameSuit = false; //Checks for other cards in other columns with the same suit;
+        boolean lessThan = false;
+        if(columnHasCards(columnNumber)) {  //Puts the card that we want to remove in a new card called 'c'
             Card c = getTopCard(columnNumber);
-            boolean removeCard = false;
-            for (int i = 0; i < 4; i++) {
-                if (i != columnNumber) {
-                    if (columnHasCards(i)) {
-                        Card compare = getTopCard(i);
-                        if (compare.getSuit() == c.getSuit()) {
-                            if(compare.getValue() == 14) {
-                                System.out.println("Ace card detected! Can remove.  ");
-                                removeCard = true;
+            if(c.getValue() == 14){ //If the value is 14, then it's an ace card and thus has special characteristics.
+                removeCardFromCol(columnNumber);
+            }
+            else{   //Checks for all cards but the ace.
+                for(int i=0; i<4; i++){ //Searches through the rest of the columns
+                    if(i == columnNumber){  //Skips over the column that the card comes from.
+                    }
+                    else{   //For every other column
+                        Card temp = getTopCard(i);  //Puts the top card of that column into a temp card.
+                        if(temp.getSuit() == c.getSuit()){  //Checks to see if the temp card and the card we want to remove are the same suit.
+                            sameSuit = true;
+                            if(temp.getValue() > c.getValue()){ //Checks to see if the temp card has a greater rank than the card we want to remove.
+                                lessThan = true;
                             }
-                            else {
-                                System.out.println("Cannot remove a non-ace card! ");
-                                removeCard = false;
+                            else{
+                                lessThan = false;
                             }
-//                            if (compare.getValue() > c.getValue()) {
-//                                removeCard = true;
-//                            }
                         }
                     }
                 }
             }
-            if (removeCard) {
-                this.columns.get(columnNumber).cards.remove(this.columns.get(columnNumber).cards.size() - 1);
-            }
+        }
+        if(sameSuit == true && lessThan == true){
+            removeCardFromCol(columnNumber);
         }
     }
 
