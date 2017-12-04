@@ -92,21 +92,29 @@ public class Game {
         }
     }
 
-    private boolean columnHasCards(int columnNumber) {
-        if (this.columns.get(columnNumber).cards.size()>0) {
-            return true;
-        }
-        return false;
+    public boolean columnHasCards(int columnNumber) {
+        return this.columns.get(columnNumber).cards.size() != 0;
     }
 
     private Card getTopCard(int columnNumber) {
-        return this.columns.get(columnNumber).cards.get(this.columns.get(columnNumber).cards.size()-1);
+        return this.columns.get(columnNumber).cards.get(this.columns.get(columnNumber).cards.size() - 1);
+    }
+
+    public boolean isColumnEmpty(int columnNumber) {
+        return this.columns.get(columnNumber).cards.size() == 0;
     }
 
     public void move(int columnFrom, int columnTo) {
-        Card cardToMove = getTopCard(columnFrom);
-        this.removeCardFromCol(columnFrom);
-        this.addCardToCol(columnTo,cardToMove);
+        if (isColumnEmpty(columnFrom)) {
+            System.out.println("Error the column" + columnFrom + " is empty.");
+        } else if (columnHasCards(columnTo)) {
+                System.out.println("Its not an empty space in column (" + columnTo +".");
+            } else {
+                this.addCardToCol(columnTo, getTopCard(columnFrom));
+                this.removeCardFromCol(columnFrom);
+                System.out.println("Moved from (" + columnFrom + "), to " + columnTo + ".");
+            }
+        }
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
@@ -114,7 +122,7 @@ public class Game {
     }
 
     private void removeCardFromCol(int colFrom) {
-        this.columns.get(colFrom).cards.remove(this.columns.get(colFrom).cards.size()-1);
+        this.columns.get(colFrom).cards.remove(this.columns.get(colFrom).cards.size() - 1);
     }
 
 }
