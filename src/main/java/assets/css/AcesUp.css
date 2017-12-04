@@ -143,6 +143,10 @@ td {
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
+.rules-title {
+    text-align: center;
+}
+
 /* The Close Button */
 .close {
     color: #aaa;
