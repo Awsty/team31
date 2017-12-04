@@ -51,17 +51,24 @@ public class testGame {
     public void testCustomDeal(){
         Game g = new Game();
         g.deck = new Deck();
-        g.customDeal(0,3,6,9);
-        assertEquals("2Clubs",g.columns.get(0).cards.get(0).toString());
-        assertEquals("3Clubs",g.columns.get(1).cards.get(0).toString());
-        assertEquals("4Clubs",g.columns.get(2).cards.get(0).toString());
-        assertEquals("5Clubs",g.columns.get(3).cards.get(0).toString());
+        ArrayList<Card> list = new ArrayList<Card>();
+        list.add(new Card(0, Suit.Hearts));
+        list.add(new Card(3, Suit.Hearts));
+        list.add(new Card(6, Suit.Hearts));
+        list.add(new Card(9, Suit.Hearts));
+        g.customDeal(list);
+        assertEquals("0Hearts",g.columns.get(0).cards.get(0).toString());
+        assertEquals("3Hearts",g.columns.get(1).cards.get(0).toString());
+        assertEquals("6Hearts",g.columns.get(2).cards.get(0).toString());
+        assertEquals("9Hearts",g.columns.get(3).cards.get(0).toString());
     }
 
     @Test
     public void testRemoveFunction(){
         Game g = new Game();
-        g.customDeal(1,1,1,1);
+        g.deck = new Deck();
+        ArrayList<Card> list = new ArrayList<Card>();
+        g.customDeal(list);
         g.remove(1);
         assertEquals(0,g.columns.get(1).cards.size());
     }
