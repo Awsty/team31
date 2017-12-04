@@ -15,6 +15,28 @@ public class testCard {
     public void testToString(){
         Card c = new Card(5,Suit.Clubs);
         assertEquals("5Clubs",c.toString());
+
+        Card c1 = new Card(12,Suit.Hearts);
+        assertEquals("12Hearts",c1.toString());
+
+        Card c2 = new Card(13,Suit.Spades);
+        assertEquals("13Spades",c2.toString());
+
+        Card c3 = new Card(14,Suit.Diamonds);
+        assertEquals("14Diamonds",c3.toString());
+
+        Card c4 = new Card(5,Suit.Oros);
+        assertEquals("5Oros",c4.toString());
+
+        Card c5 = new Card(5,Suit.Copas);
+        assertEquals("5Copas",c5.toString());
+
+        Card c6 = new Card(5,Suit.Espadas);
+        assertEquals("5Espadas",c6.toString());
+
+        Card c7 = new Card(0,Suit.Comodines);
+        assertEquals("0Comodines",c7.toString());
+
     }
 
     @Test
