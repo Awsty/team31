@@ -50,15 +50,20 @@ public class Game {
     }
 
     //customDeal to setup game for testing purposes (i.e. shuffled cards are random and hard to test)
-    public void customDeal(int c1, int c2, int c3, int c4) {
-        columns.get(0).cards.add(deck.cards.get(c1));
-        deck.cards.remove(c1);
-        columns.get(1).cards.add(deck.cards.get(c2));
-        deck.cards.remove(c2);
-        columns.get(2).cards.add(deck.cards.get(c3));
-        deck.cards.remove(c3);
-        columns.get(3).cards.add(deck.cards.get(c4));
-        deck.cards.remove(c4);
+//    public void customDeal(int c1, int c2, int c3, int c4) {
+//        columns.get(0).cards.add(deck.cards.get(c1));
+//        deck.cards.remove(c1);
+//        columns.get(1).cards.add(deck.cards.get(c2));
+//        deck.cards.remove(c2);
+//        columns.get(2).cards.add(deck.cards.get(c3));
+//        deck.cards.remove(c3);
+//        columns.get(3).cards.add(deck.cards.get(c4));
+//        deck.cards.remove(c4);
+    //}
+
+    public void customDeal(ArrayList<Card> list) {
+        for (int i = 0; i < list.size(); ++i)
+            addCardToCol(i%4, list.get(i));
     }
 
     public void remove(int columnNumber) {
