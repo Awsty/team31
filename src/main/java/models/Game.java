@@ -108,14 +108,13 @@ public class Game {
         if (isColumnEmpty(columnFrom)) {
             System.out.println("Error the column" + columnFrom + " is empty.");
         } else if (columnHasCards(columnTo)) {
-                System.out.println("Its not an empty space in column (" + columnTo +".");
+                System.out.println("Its not an empty space in column " + columnTo +".");
             } else {
                 this.addCardToCol(columnTo, getTopCard(columnFrom));
                 this.removeCardFromCol(columnFrom);
-                System.out.println("Moved from (" + columnFrom + "), to " + columnTo + ".");
+                System.out.println("Moved from " + columnFrom + ", to " + columnTo + ".");
             }
         }
-    }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
         columns.get(columnTo).cards.add(cardToMove);
