@@ -64,13 +64,24 @@ public class Game {
 
     public void remove(int columnNumber) {
         boolean sameSuit = false; //Checks for other cards in other columns with the same suit;
-        boolean lessThan = false;
+        boolean lessThan = false; //Checks the values against each other to see if it's valid to remove.
+        int chooseRemove; //For the spanish deck when wild card is seen.
         if(columnHasCards(columnNumber)) {  //Puts the card that we want to remove in a new card called 'c'
             Card c = getTopCard(columnNumber);
             if(c.getValue() == 14){ //If the value is 14, then it's an ace card and thus has special characteristics.
                 removeCardFromCol(columnNumber);
             }
             else{   //Checks for all cards but the ace.
+                for(int i=0; i<4; i++) {
+                    if (i == columnNumber) { //Skips over the column that the card comes from
+                    } else {
+                        Card temp = getTopCard(i);
+                        if (temp.getSuit() == Suit.Comodines) {
+                            removeCardFromCol(i);
+                            removeCardFromCol(columnNumber);
+                        }
+                    }
+                }
                 for(int i=0; i<4; i++){ //Searches through the rest of the columns
                     if(i == columnNumber){  //Skips over the column that the card comes from.
                     }
