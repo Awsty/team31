@@ -14,4 +14,5 @@ public class Column {
     public Column(int id) {
         this.id = id;
     }
+
 }
