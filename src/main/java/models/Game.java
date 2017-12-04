@@ -4,6 +4,7 @@ import controllers.ApplicationController;
 import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     int gameMode; /* 0 - Normal, 1 - Spanish */
@@ -102,7 +103,6 @@ public class Game {
         return this.columns.get(columnNumber).cards.get(this.columns.get(columnNumber).cards.size()-1);
     }
 
-
     public void move(int columnFrom, int columnTo) {
         Card cardToMove = getTopCard(columnFrom);
         this.removeCardFromCol(columnFrom);
@@ -116,4 +116,5 @@ public class Game {
     private void removeCardFromCol(int colFrom) {
         this.columns.get(colFrom).cards.remove(this.columns.get(colFrom).cards.size()-1);
     }
+
 }
