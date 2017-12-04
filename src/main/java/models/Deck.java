@@ -31,10 +31,21 @@ public class Deck {
         ArrayList<Card> four = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             if (cards.size() > 0) {
-                four.add(cards.get(i));
-                cards.remove(i);
+                four.add(cards.get(cards.size()-1));
+                cards.remove(cards.size()-1);
+            }
+            else {
+                System.out.println("No more cards in the deck! ");
             }
         }
         return four;
+    }
+
+    public void removeComodines(){
+        for (int i = 0; i < 4; i++) {
+            if(cards.get(i).getValue() == 0) {
+                cards.remove(i);
+            }
+        }
     }
 }
