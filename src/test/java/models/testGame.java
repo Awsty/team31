@@ -3,6 +3,8 @@ package models;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.ArrayList;
+
 
 import static org.junit.Assert.*;
 
@@ -17,14 +19,17 @@ public class testGame {
     @Test
     public void testGameBuildDeck(){
         Game g = new Game();
+        g.deck = new Deck();
         assertEquals(52,g.deck.cards.size());
     }
 
     @Test
     public void testGameShuffle(){
         Game g1 = new Game();
+        g1.deck = new Deck();
         g1.deck.shuffle();
         Game g2 = new Game();
+        g2.deck = new Deck();
         g2.deck.shuffle();
         // g1 and g2 could shuffle to the same order, but that chance is approximately 1 in 8*10^67 shuffles
         assertFalse(Arrays.equals(g1.deck.cards.toArray(),g2.deck.cards.toArray()));
@@ -33,6 +38,7 @@ public class testGame {
     @Test
     public void testGameStart(){
         Game g = new Game();
+        g.deck = new Deck();
         g.deck.shuffle();
         g.dealFour();
         assertEquals(1,g.columns.get(0).cards.size());
@@ -44,6 +50,7 @@ public class testGame {
     @Test
     public void testCustomDeal(){
         Game g = new Game();
+        g.deck = new Deck();
         g.customDeal(0,3,6,9);
         assertEquals("2Clubs",g.columns.get(0).cards.get(0).toString());
         assertEquals("3Clubs",g.columns.get(1).cards.get(0).toString());
@@ -54,20 +61,34 @@ public class testGame {
     @Test
     public void testRemoveFunction(){
         Game g = new Game();
-        g.customDeal(0,3,6,9);
-        g.remove(2);
-        assertEquals(0,g.columns.get(2).cards.size());
+        g.customDeal(1,1,1,1);
+        g.remove(1);
+        assertEquals(0,g.columns.get(1).cards.size());
     }
 
 
     @Test
     public void testColumnHasCards(){
         Game g = new Game();
+        g.deck = new Deck();
         g.dealFour();
         assertEquals(false, g.isColumnEmpty(0));
         assertEquals(false, g.isColumnEmpty(1));
         assertEquals(false, g.isColumnEmpty(2));
         assertEquals(false, g.isColumnEmpty(3));
     }
+
+    @Test
+    public void testIsColumnEmpty(){
+        Game g = new Game();
+        g.deck = new Deck();
+        g.dealFour();
+        assertEquals(false, g.isColumnEmpty(0));
+        assertEquals(false, g.isColumnEmpty(1));
+        assertEquals(false, g.isColumnEmpty(2));
+        assertEquals(false, g.isColumnEmpty(3));
+    }
+
+
 
 }

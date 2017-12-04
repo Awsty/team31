@@ -1,7 +1,6 @@
 package models;
 
 import controllers.ApplicationController;
-import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.List;
